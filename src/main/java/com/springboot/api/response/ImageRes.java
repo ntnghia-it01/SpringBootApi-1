@@ -7,11 +7,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class UserRes {
-    private int id;
-    private String username;
-    private String name;
-    private int gender;
-    private String avatar;
-    private int role;
+public class ImageRes {
+  private int id;
+  private int prodId;
+  private String imageUrl;
 }
