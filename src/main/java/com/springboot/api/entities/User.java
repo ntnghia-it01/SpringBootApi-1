@@ -64,6 +64,8 @@ public class User {
 
     @Column(name = "role")
     private int role;
+    // 0 => ADMIN
+    // 1 => USER
 
     public Role getRoleEnum() {
         return Role.fromValue(this.role);

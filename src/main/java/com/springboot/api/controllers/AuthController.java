@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springboot.api.beans.UserBean;
 import com.springboot.api.entities.User;
 import com.springboot.api.jpas.UserJPA;
+import com.springboot.api.response.LoginRes;
 import com.springboot.api.response.Response;
 import com.springboot.api.response.UserRes;
 import com.springboot.api.services.ImageServices;
@@ -238,8 +239,18 @@ public class AuthController {
 			String role = authentication.getAuthorities().iterator().next().getAuthority();
 			String token = jwtUtil.generateToken(username, role);
 
+			Optional<User> userOptional = userJPA.findByUsername(username);
+
+			LoginRes loginRes = new LoginRes();
+			if(userOptional.isPresent()){
+				User user = userOptional.get();
+				loginRes.setId(user.getId());
+				loginRes.setRole(user.getRole());
+			}
+			loginRes.setToken(token);
+
 			// Prepare response
-			res.setData(token);
+			res.setData(loginRes);
 			res.setStatus(1);
 			res.setMessage("Login successful!");
 			return ResponseEntity.ok().body(res);

@@ -1,7 +1,6 @@
 package com.springboot.api.utils;
 
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 import org.springframework.stereotype.Component;
@@ -21,6 +20,14 @@ public class JwtUtil {
         if (!role.startsWith("ROLE_")) {
             role = "ROLE_" + role;
         }
+
+        // Ma trận phân quyền
+        // permission
+        // PERMISSION_
+
+        // Api Login => tạo ra jwt token, refresh token
+        // Api refresh => tạo ra jwt token mới
+        // jwt token => lưu ở cookie phía client
     
         return Jwts.builder()
                    .setSubject(username)
