@@ -33,7 +33,6 @@ import com.springboot.api.utils.JwtUtil;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin("*")
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
